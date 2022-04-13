@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function deepClone(obj, hash = new WeakMap()) {
+            if (obj === null) return obj;
+            if (obj instanceof Date) return new Date(obj);
+            if (obj instanceof RegExp) return new RegExp(obj);
+            if (typeof obj !== "object") return obj;
+            if (hash.get(obj)) return hash.get(obj);
+            let cloneObj = Array.isArray(obj) ? [] : {};
+            hash.set(obj, cloneObj);
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    cloneObj[key] = deepClone(obj[key], hash)
+                }
+            }
+            return cloneObj;
+        }
+        let obj = { name: 1, address: { x: 100 }, num: [1, 2, [4, 5, 6], 4, 5] };
+        obj.o = obj;
+        let d = deepClone(obj);
+        obj.address.x = 200;
+        console.log(d);
+    </script>
+</body>
+
+</html>

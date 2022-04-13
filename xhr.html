@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var xhr2 = new XMLHttpRequest()
+        xhr2.open('POST', 'http://www.liulongbin.top:3006/api/addbook')
+        xhr2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr2.send('bookname=wey&author=youguess&publisher=youguess')
+        xhr2.onreadystatechange = function () {
+            if (xhr2.readyState === 4) {
+                if (xhr2.status === 200) {
+                    console.log(xhr2.response)
+                }
+            }
+        }
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks')
+        xhr.send()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log(JSON.parse(xhr.response))
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
