@@ -1,0 +1,97 @@
+* {
+    padding:0;
+    margin:0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, rgb(114,135,254),rgb(130,88,186));
+}
+
+.login-container {
+    width: 600px;
+    height: 292px;
+    margin:0 auto;
+    margin-top:20%;
+    border-radius:15px;
+    box-shadow: 0 10px 50px 0px rgb(59,45,159);
+    background-color: rgb(95,76,194);
+}
+.left-container {
+    display: inline-block;
+    width: 330px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding: 60px;
+    background-image: linear-gradient(to bottom right, rgb(118,76,194),rgb(92,103,211));
+}
+.left-container .title {
+    color:#fff;
+    font-size: 18px;
+}
+.left-container .title span {
+    border-bottom:3px solid rgb(237,221,22);
+}
+.left-container .input-container {
+    padding:10px 0;
+}
+.left-container .input-container input{
+    display:block;
+    border:0;
+    background: none;
+    outline:0;
+    color:#fff;
+    margin:20px 0;
+    padding: 5px 0;
+    width: 100%;
+    border-bottom:1px solid rgb(199,191,219);
+}
+.left-container .input-container input:hover{
+border-bottom-color:#fff ;
+}
+::-webkit-input-placeholder{
+    color: rgb(199,191,219);
+}
+.left-container .message-container {
+    font-size:14px;
+    transition:.2s;
+    color:rgb(199,191,219);
+    cursor: pointer;
+}
+.right-container {
+    width: 145px;
+    display: inline-block;
+    vertical-align: top;
+    height: calc(100%-120px);
+    padding: 60px 0;
+    text-align: center;
+}
+.right-container .register-container {
+    text-align:center;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 200;
+}
+.right-container .register-container span{
+    margin: 0 auto;
+    border-bottom:3px solid rgb(237,221,22);
+}
+.right-container .action-container {
+
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+}
+.right-container .action-container span{
+    margin: 0 auto;
+    border:1px solid rgb(237,221,22);
+    padding: 10px;
+    display: block;
+    width: 50px;
+    line-height: 25px;
+    border-radius: 15px;
+    margin-top:20px;
+}
