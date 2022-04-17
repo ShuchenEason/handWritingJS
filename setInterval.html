@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Method1
+        let timeMap = {}
+        let id = 0
+        function mySetInterval(foo, timeout) {
+            let timeID = id
+            id++
+            const fn = () => {
+                foo()
+                timeMap[timeID] = setTimeout(() => { fn() }, timeout)
+            }
+            timeMap[timeID] = setTimeout(fn, timeout)
+            return timeID
+        }
+        function myClearTimeout(timeID) {
+            clearTimeout(timeMap[timeID])
+            delete timeMap[timeID]
+        }
+
+        // Method2
+        // function mySetInterval(foo, timeout) {
+        //     var timer = {
+        //         id: null
+        //     }
+
+        //     function fn() {
+        //         foo();
+        //         timer.id = setTimeout( ()=> {
+        //             fn();
+        //         }, timeout);
+        //     }
+        //     fn();
+        //     return timer
+        // }
+
+        // function myClearTimeout(timer) {
+        //     clearTimeout(timer.id);
+        // }
+
+
+
+        const newTime = mySetInterval(() => { // 此处id是Number类型，是值的拷贝而不是引用
+            console.log(new Date())
+        }, 1000)
+
+        setTimeout(() => { // 2秒后清除定时器
+            myClearTimeout(newTime)
+        }, 5000)
+
+    </script>
+</body>
+
+</html>
