@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+        }
+
+        main {
+            width: 500px;
+            margin: 100px auto;
+        }
+
+        .tabsbox .firstnav li {
+            width: 100px;
+            box-sizing: border-box;
+        }
+
+        .tabsbox .firstnav .li-active {
+            border: 1px solid #000;
+            border-bottom-color: #fff;
+        }
+
+        .tabscon section {
+            box-sizing: border-box;
+            margin-top: 1px;
+            padding: 50px;
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+            display: none;
+        }
+
+        .tabscon .con-active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h4>
+            JS OOP tab
+        </h4>
+        <div class="tabsbox" id="tab">
+            <nav class="firstnav">
+                <ul>
+                    <li class="li-active"><span>test1</span></li>
+                    <li><span>test2</span></li>
+                    <li><span>test3</span></li>
+                </ul>
+                <div class="tabadd">
+                    <span>+</span>
+                </div>
+            </nav>
+            <div class="tabscon">
+                <section class="con-active">test1</section>
+                <section>test2</section>
+                <section>test3</section>
+            </div>
+        </div>
+    </main>
+    <script>
+        var that
+        class Tab {
+            constructor(id) {
+                that = this
+                this.main = document.querySelector(id)
+                this.lis = this.main.querySelectorAll('li')
+                this.sections = this.main.querySelectorAll('section')
+                this.add = this.main.querySelector('.tabadd')
+                this.ul = this.main.querySelector('.firstnav ul:first-child')
+                this.init()
+            }
+            init() {
+                this.add.onclick = this.addTab
+                for (var i = 0; i < this.lis.length; i++) {
+                    this.lis[i].index = i
+                    this.lis[i].onclick = this.toggleTab
+                }
+            }
+            clearClass() {
+                for (var i = 0; i < this.lis.length; i++) {
+                    this.lis[i].className = ''
+                    this.sections[i].className = ''
+                }
+            }
+            toggleTab() {
+                that.clearClass()
+                this.className = 'li-active'
+                that.sections[this.index].className = 'con-active'
+            }
+            addTab() {
+                var li = '<li class="li-active"><span>test1</span></li>'
+                that.ul.insertAdjacentHTML('beforeend', li)
+            }
+            removeTab() {
+
+            }
+            editTab() {
+
+            }
+        }
+        new Tab('#tab');
+    </script>
+</body>
+
+</html>
