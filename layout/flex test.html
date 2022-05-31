@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div5 {
+            height: 20vh;
+            display: flex;
+            /* flex-flow: row; */
+        }
+
+        .div5 aside {
+            background-color: aqua;
+            flex: 0 1 20%;
+            overflow-y: auto;
+            max-height: 20vh;
+        }
+
+        .div5 .content {
+            display: flex;
+            flex: 1;
+            flex-flow: column;
+            /* overflow-y: auto; */
+        }
+
+        .div5 header,
+        .div5 footer {
+            background-color: blanchedalmond;
+
+        }
+
+        /* 设置垂直水平居中 */
+        .div5 article {
+            display: flex;
+            flex-flow: column;
+            background-color: aliceblue;
+            align-items: center;
+            justify-content: center;
+            height: 30vh;
+        }
+
+        .content-text {
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div5">
+        <aside>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+            <p>item</p>
+
+        </aside>
+        <div class="content">
+            <header>header</header>
+            <article>
+                <div class="content-text">content</div>
+                <div class="content-text">content</div>
+                <div class="content-text">content</div>
+                <div class="content-text">content</div>
+                <div class="content-text">content</div>
+                <div class="content-text">content</div>
+            </article>
+            <footer>footer</footer>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

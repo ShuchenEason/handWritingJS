@@ -30,6 +30,19 @@
         let d = deepClone(obj);
         obj.address.x = 200;
         console.log(d);
+        function newDC(obj) {
+            if (typeof obj === 'Object') {
+                let cloneObj = {}
+                for (let key in obj) {
+                    cloneObj[key] = newDC(obj[key])
+                }
+                return cloneObj
+            } else {
+                return obj
+            }
+        }
+        let fff = newDC(obj)
+        console.log(fff);
     </script>
 </body>
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        let start = 0
+        let root = document.getElementById('root')
+        function trans() {
+            root.style.transform = 'translateX(' + start + 'px)'
+            start += 10
+        }
+        function animate(startTime) {
+            if (!start) {
+                start = startTime
+            }
+            // console.log(startTime - start);
+            root.style.transform = 'translateX(' + startTime * 0.1 + 'px)'
+            if (startTime < 3000) window.requestAnimationFrame(animate)
+        }
+        // window.requestAnimationFrame(animate)
+        setInterval(trans, 20)
+    </script>
+</body>
+
+</html>

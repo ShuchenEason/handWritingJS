@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        let start
+        let root = document.getElementById('root')
+        function trans() {
+            root.style.transform = 'translateX(' + start + 'px)'
+            start += 10
+        }
+        function animate(startTime) {
+            if (!start) {
+                start = startTime
+            }
+            // console.log(startTime - start);
+            root.style.transform = 'translateX(' + startTime * 0.1 + 'px)'
+            if (startTime < 3000) window.requestAnimationFrame(animate)
+        }
+        window.requestAnimationFrame(animate)
+        // setInterval(trans, 20)
+
+    </script>
+    <script>
+        function sleep(duration) {
+            let time = Date.now()
+            while (duration + time > Date.now()) {
+
+            }
+        }
+        let works = [
+            () => {
+                // setTimeout(console.log('w1'), 10)
+                // sleep(1000)
+                console.log('w1');
+            },
+            () => {
+                // setTimeout(console.log('w2'), 10)
+                sleep(500)
+                console.log('w2');
+            },
+            () => {
+                // setTimeout(console.log('w3'), 10)
+                // sleep(20)
+                console.log('w3');
+            },
+            () => {
+                // setTimeout(console.log('w4'), 10)
+                sleep(500)
+                console.log('w4');
+            },
+            () => {
+
+                console.log('w5');
+            },
+            () => {
+
+                console.log('w6');
+            },
+            () => {
+
+                console.log('w7');
+            },
+        ]
+        let start2
+        function animate2(startTime) {
+            if (!start2) {
+                start2 = startTime
+            }
+            console.log(1);
+            // console.log(startTime - start);
+            if (startTime < 3000) window.requestAnimationFrame(animate2)
+        }
+
+        function performWork() {
+            let work = works.shift()
+            work()
+        }
+        function progress(ddl) {
+            console.log('rest time', ddl.timeRemaining());
+            if (ddl.timeRemaining() > 0 && works.length > 0) {
+                performWork()
+                // window.requestIdleCallback(progress)
+            }
+            if (works.length > 0) {
+                window.requestIdleCallback(progress)
+            }
+        }
+        // sleep(2000)
+        window.requestAnimationFrame(animate2)
+        window.requestIdleCallback(progress)
+    </script>
+</body>
+
+</html>

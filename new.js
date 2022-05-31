@@ -13,3 +13,11 @@ function myNew(constructor) {
     }
     return newObj;
 }
+function Test() {
+    this.name = 'jack'
+    this.age = 23
+    return 23
+}
+x = myNew(Test)
+
+console.log(x);
